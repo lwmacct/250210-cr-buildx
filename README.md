@@ -1,6 +1,7 @@
 # 推荐阅读
 - 代码仓库: https://github.com/lwmacct/250210-cr-builder
 - 语雀文档: https://www.yuque.com/lwmacct/docker/buildx
+- 官方文档: https://github.com/docker/buildx
 
 # 其他架构
 ```bash
