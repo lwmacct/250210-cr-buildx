@@ -1,22 +1,3 @@
-# 推荐阅读
-- 代码仓库: https://github.com/lwmacct/250210-cr-builder
-- 语雀文档: https://www.yuque.com/lwmacct/docker/buildx
-
-# 其他架构
-```bash
-docker buildx inspect
-```
-
-```bash
-docker run --privileged --rm tonistiigi/binfmt --install all
-```
-
-```bash
-docker run --privileged --rm registry.cn-hangzhou.aliyuncs.com/lwmacct/mirror:tonistiigi--binfmt--qemu-v7.0.0 --install all
-```
-
-# 简单示例
-```bash
 #!/usr/bin/env bash
 # shellcheck disable=SC2317
 # document https://www.yuque.com/lwmacct/docker/buildx
@@ -85,24 +66,3 @@ __help() {
 
 EOF
 }
-
-```
-
-
-# Docker 技巧
-## 多行写入
-```bash
-RUN set -eux; \
-    echo "补充/调整/测试"; \
-    chroot /apps/rootfs/ bash <<"MEOF"
-    set -ex;
-{
-    apt-get install -y --no-install-recommends bc;
-    apt-get dist-upgrade -y;
-    apt-get clean;
-}
-MEOF
-
-```
-
-
