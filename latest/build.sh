@@ -17,7 +17,7 @@ FROM ubuntu:noble-20241015
 ARG DEBIAN_FRONTEND=noninteractive
 
 LABEL org.opencontainers.image.source=$_ghcr_source
-LABEL org.opencontainers.image.description="lwmacct"
+LABEL org.opencontainers.image.description="docker buildx 模板"
 LABEL org.opencontainers.image.licenses=MIT
 EOF
   )
@@ -26,7 +26,7 @@ EOF
     echo "$_dockerfile" >Dockerfile
 
     _ghcr_source=$(sed 's|git@github.com:|https://github.com/|' ../.git/config | grep url | sed 's|.git$||' | awk '{print $NF}')
-    _ghcr_source=${_ghcr_source:-"https://github.com/lwmacct/250210-cr-builder"}
+    _ghcr_source=${_ghcr_source:-"https://github.com/lwmacct/250210-cr-buildx"}
     sed -i "s|\$_ghcr_source|$_ghcr_source|g" Dockerfile
   }
 
@@ -63,6 +63,8 @@ __main
 __help() {
   cat >/dev/null <<"EOF"
 这里可以写一些备注
+
+ghcr.io/lwmacct/250210-cr-buildx:latest
 
 EOF
 }
