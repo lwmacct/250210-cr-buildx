@@ -1,12 +1,13 @@
-#!/usr/bin/env bash
-# shellcheck disable=SC2317
+#!/bin/bash
+# Admin https://yuque.com/lwmacct
 # document https://www.yuque.com/lwmacct/docker/buildx
 
 __main() {
   {
-    _sh_path=$(realpath "$(ps -p $$ -o args= 2>/dev/null | awk '{print $2}')") # 当前脚本路径
-    _pro_name=$(echo "$_sh_path" | awk -F '/' '{print $(NF-2)}')               # 当前项目名
-    _dir_name=$(echo "$_sh_path" | awk -F '/' '{print $(NF-1)}')               # 当前目录名
+    # _sh_path=$(realpath "$(ps -p $$ -o args= 2>/dev/null | awk '{print $2}')") # 当前脚本路径
+    _sh_path=$(realpath "${BASH_SOURCE[0]}")                     # 当前脚本路径 (依赖 bash)
+    _pro_name=$(echo "$_sh_path" | awk -F '/' '{print $(NF-2)}') # 当前项目名
+    _dir_name=$(echo "$_sh_path" | awk -F '/' '{print $(NF-1)}') # 当前目录名
     _image="${_pro_name}:$_dir_name"
   }
 
@@ -30,7 +31,7 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u\[\033[00m\]@\[\033[01;3
 MEOF
 
 LABEL org.opencontainers.image.source=$_ghcr_source
-LABEL org.opencontainers.image.description="docker buildx 模板"
+LABEL org.opencontainers.image.description="https://yuque.com/lwmacct"
 LABEL org.opencontainers.image.licenses=MIT
 EOF
   )
